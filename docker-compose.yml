@@ -1,0 +1,20 @@
+version: "v2"
+
+services:
+  pii-validator:
+    platform: linux/amd64
+    build: .
+    deploy:
+      replicas: 2
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+      - AWS_REGION=ap-south-1
+      - DOMAIN=my-awesome-domain
+      - REGION=ap-south-1
+      - CLIENT_ID=76e2b7e9ca18314b1063ebb8308598ad
+      - CLIENT_SECRET=434c06cb41f32f27e6b8d8e572e2cb7e007053e088325e26964fa7222b136a94
+      - TABLE_NAME=users
+      - JAVA_OPTS=-Dserver.port=8080
+      - STREAM_ARN=arn:aws:dynamodb:ap-south-1:241266299283:table/users/stream/2021-06-21T07:46:29.802

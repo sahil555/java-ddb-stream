@@ -1,0 +1,131 @@
+{
+  "taskDefinitionArn": "arn:aws:ecs:ap-south-1:400107536981:task-definition/gps-checks-table-pii-validator:1",
+  "containerDefinitions": [
+    {
+      "name": "gps-check-table-pii-validator",
+      "image": "400107536981.dkr.ecr.ap-south-1.amazonaws.com/pii-validator:latest",
+      "cpu": 1024,
+      "memory": 2048,
+      "memoryReservation": 2048,
+      "portMappings": [
+        {
+          "name": "gps-check-table-pii-validator",
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "CLIENT_SECRET",
+          "value": "9439649c8bc1f6c60a1a9d1359c45c9276717bba20334623241e47e11f8eee0a"
+        },
+        {
+          "name": "TABLE_NAME",
+          "value": "gps_checks"
+        },
+        {
+          "name": "SERVICE_URL",
+          "value": "https://pii.a23games.in/"
+        },
+        {
+          "name": "CLIENT_ID",
+          "value": "7fe35705293caa68edf6b8894e10ed12"
+        },
+        {
+          "name": "STREAM_ARN",
+          "value": "arn:aws:dynamodb:ap-south-1:400107536981:table/gps_checks/stream/2024-01-18T12:16:49.643"
+        },
+        {
+          "name": "ENV",
+          "value": "production"
+        },
+        {
+          "name": "APPLICATION_NAME",
+          "value": "gps-check-pii-validator"
+        }
+      ],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/pii-validator",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "gps-check-table"
+        }
+      }
+    }
+  ],
+  "family": "gps-checks-table-pii-validator",
+  "taskRoleArn": "arn:aws:iam::400107536981:role/ECSTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::400107536981:role/ECSTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "revision": 1,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "1024",
+  "memory": "2048",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "registeredAt": "2024-01-19T11:06:37.453Z",
+  "registeredBy": "arn:aws:sts::400107536981:assumed-role/AWSReservedSSO_Platform_Leads_8e203f5249b0c897/ayush.ravi@hdworks.in",
+  "tags": [
+    {
+      "key": "ENV",
+      "value": "production"
+    },
+    {
+      "key": "DOMAIN",
+      "value": "PLATFORM"
+    },
+    {
+      "key": "SERVICE",
+      "value": "gps-check-platform-pii-validator"
+    }
+  ]
+}
