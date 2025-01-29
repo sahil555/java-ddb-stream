@@ -1,9 +1,9 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:ap-south-1:400107536981:task-definition/bank-account-master-table-pii-validator:1",
+  "taskDefinitionArn": "arn:aws:ecs:ap-south-1:${AccountId}:task-definition/bank-account-master-table-pii-validator:1",
   "containerDefinitions": [
     {
       "name": "bank_account_master-table-pii-validator",
-      "image": "400107536981.dkr.ecr.ap-south-1.amazonaws.com/pii-validator:latest",
+      "image": "${AccountId}.dkr.ecr.ap-south-1.amazonaws.com/pii-validator:latest",
       "cpu": 1024,
       "memory": 2048,
       "memoryReservation": 2048,
@@ -35,7 +35,7 @@
         },
         {
           "name": "STREAM_ARN",
-          "value": "arn:aws:dynamodb:ap-south-1:400107536981:table/bank_account_master/stream/2024-01-18T12:15:44.276"
+          "value": "arn:aws:dynamodb:ap-south-1:${AccountId}:table/bank_account_master/stream/2024-01-18T12:15:44.276"
         },
         {
           "name": "ENV",
@@ -60,8 +60,8 @@
     }
   ],
   "family": "bank-account-master-table-pii-validator",
-  "taskRoleArn": "arn:aws:iam::400107536981:role/ECSTaskExecutionRole",
-  "executionRoleArn": "arn:aws:iam::400107536981:role/ECSTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::${AccountId}:role/ECSTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::${AccountId}:role/ECSTaskExecutionRole",
   "networkMode": "awsvpc",
   "revision": 1,
   "volumes": [],
@@ -113,7 +113,7 @@
     "operatingSystemFamily": "LINUX"
   },
   "registeredAt": "2024-01-22T11:50:02.488Z",
-  "registeredBy": "arn:aws:sts::400107536981:assumed-role/AWSReservedSSO_Platform_Leads_8e203f5249b0c897/ayush.ravi@hdworks.in",
+  "registeredBy": "arn:aws:sts::${AccountId}:assumed-role/AWSReservedSSO_Platform_Leads_8e203f5249b0c897/ayush.ravi@hdworks.in",
   "tags": [
     {
       "key": "ENV",
